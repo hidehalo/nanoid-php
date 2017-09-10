@@ -5,6 +5,6 @@ class Generator implements GeneratorInterface
 {
     public function random($size)
     {
-        return \random_bytes($size);
+        return unpack('C*', \random_bytes($size));
     }
 }

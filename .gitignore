@@ -1,6 +1,6 @@
 .idea/
 .vscode/
 .DS_Store/
-.composer.lock
+composer.lock
 *.swp
 vendor/

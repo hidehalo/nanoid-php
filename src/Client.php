@@ -22,12 +22,14 @@ class Client
 
     public function generate($size)
     {
-        $size = $size || $this->size;
+        $size = $size?: $this->size;
         $id = '';
         // $bytes = $this->core->random($this->generator, $this->alphbet, $size);
         $bytes = $this->generator->random($size);
-        for ($i = 0; $i < $size; $i++) {
-          $id += CoreInterface::MASKS[$bytes[$i] & 63];
+        for ($i = 1; $i <= $size; $i++) {
+            if (isset($bytes[$i]) && isset(CoreInterface::MASKS[$bytes[$i] & 63])) {
+                $id .= CoreInterface::MASKS[$bytes[$i] & 63];
+            }
         }
 
         return $id;
