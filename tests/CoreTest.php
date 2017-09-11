@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class CoreTest extends TestCase
 {
     /**
-     * @group testing
+     * @group passed
      * @dataProvider coreProvider
      * @param CoreInterface $core
      * @param GeneratorInterface $generator

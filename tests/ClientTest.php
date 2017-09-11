@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 class ClientTest extends TestCase
 {
     /**
-     * @group testing
+     * @group passed
      * @dataProvider clientProvider
      * @param Client $client
      */

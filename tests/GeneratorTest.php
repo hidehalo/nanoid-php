@@ -9,7 +9,7 @@ class GeneratorTest extends TestCase
 {
 
     /**
-     * @group testing
+     * @group passed
      * @dataProvider generatorProvider
      * @param CoreInterface $core
      */

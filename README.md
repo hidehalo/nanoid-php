@@ -19,7 +19,7 @@ $client = new \Hidehalo\Nanoid\Client();
 # use normal random generator
 echo $client->generate($size = 22);
 # use better random generator
-eho $client->generate($size = 22, $mode = \Hidehalo\Nanoid\Client::MODE_DYNAMIC)
+echo $client->generate($size = 22, $mode = \Hidehalo\Nanoid\Client::MODE_DYNAMIC)
 ```
 
 ## Change log
@@ -36,9 +36,9 @@ $ ./vendor/bin/phpunit ./tests
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
 
-## Security
+## Notice
 
-If you discover any security related issues, please email tianchen_cc@yeah.net instead of using the issue tracker.
+If you have any issues, just feel free and open it in this repository, thx!
 
 ## Credits
 
