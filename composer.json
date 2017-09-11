@@ -1,7 +1,7 @@
 {
     "name": "hidehalo/nanoid-php",
     "type": "library",
-    "description": "",
+    "description": "A copy of nanoid in PHP",
     "keywords": [
         "hidehalo",
         "nanoid-php"
@@ -13,7 +13,7 @@
             "name": "hidehalo",
             "email": "tianchen_cc@yeah.net",
             "homepage": "https://github.com/hidehalo",
-            "role": "Developer"
+            "role": "Owner"
         }
     ],
     "require": {
@@ -21,7 +21,7 @@
         "paragonie/random_compat": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit" : ">=5.4.3",
+        "phpunit/phpunit" : ">=5.6",
         "squizlabs/php_codesniffer": "^2.3"
     },
     "autoload": {

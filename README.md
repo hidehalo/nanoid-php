@@ -1,5 +1,7 @@
 # Nanoid-php
 
+[![Build Status](https://travis-ci.org/hidehalo/emoji.svg)](https://travis-ci.org/hidehalo/nanoid-php)
+
 Thanks awesome [ai](https://github.com/ai) and his [nanoid](https://github.com/ai/nanoid), this package is a copy in PHP!
 If you like nanoid and you want to use it in PHP, try me :D
 
