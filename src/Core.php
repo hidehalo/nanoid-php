@@ -3,7 +3,7 @@ namespace Hidehalo\Nanoid;
 
 class Core implements CoreInterface
 {
-    public function random(GeneratorInterface $generator, $alphabet, $size)
+    public function random(GeneratorInterface $generator, $size, $alphabet = CoreInterface::SAFE_SYMBOLS)
     {
         $filter = function ($e) use ($alphabet) {
             return $e >= strlen($alphabet) - 1;
@@ -19,6 +19,7 @@ class Core implements CoreInterface
                 if (isset($alphabet[$byte])) {
                     $id .= $alphabet[$byte];
                     if (strlen($id) === $size) {
+                        
                         return $id;
                     }
                 }

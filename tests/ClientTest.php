@@ -11,11 +11,14 @@ class ClientTest extends TestCase
      * @dataProvider clientProvider
      * @param Client $client
      */
-    public function testGenerate(Client $client)
+    public function testDynamicAndNormalGenerate(Client $client)
     {
         $size = 7;
-        $ret = $client->generate($size);
-        $this->assertEquals($size, strlen($ret));
+        $normalRandom = $client->generate($size);
+        $dynamicRandom = $client->generate($size, Client::MODE_DYNAMIC);
+        $this->assertEquals($size, strlen($normalRandom));
+        $this->assertEquals($size, strlen($dynamicRandom));
+        $this->assertNotEquals($normalRandom, $dynamicRandom);
     }
 
     /**

@@ -13,5 +13,5 @@ interface CoreInterface
      * @param string $alphabet
      * @param integer $size
      */
-    public function random(GeneratorInterface $generator, $alphabet, $size);
+    public function random(GeneratorInterface $generator, $size, $alphabet);
 }

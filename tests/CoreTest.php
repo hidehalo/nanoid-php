@@ -19,7 +19,7 @@ class CoreTest extends TestCase
     {
         $alph = 'abcdefghijk0123456789';
         $size = 5;
-        $ret = $core->random($generator, $alph, $size); 
+        $ret = $core->random($generator, $size, $alph); 
         $this->assertEquals($size, strlen($ret));
     }
 
