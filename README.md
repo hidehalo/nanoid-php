@@ -42,8 +42,8 @@ If you discover any security related issues, please email tianchen_cc@yeah.net i
 
 ## Credits
 
-- [hidehalo][https://github.com/hidehalo]
-- [All Contributors][https://github.com/hidehalo/nanoid-php/graphs/contributors]
+- [hidehalo](https://github.com/hidehalo)
+- [All Contributors](https://github.com/hidehalo/nanoid-php/graphs/contributors)
 
 ## License
 
