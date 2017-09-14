@@ -16,12 +16,25 @@ $ composer require hidehalo/nanoid-php
 ## Usage
 
 ``` php
-# construct client
+# Construct client
 $client = new \Hidehalo\Nanoid\Client();
-# use normal random generator
+# Use normal random generator
 echo $client->generate($size = 22);
-# use better random generator
+# Use better random generator
 echo $client->generate($size = 22, $mode = \Hidehalo\Nanoid\Client::MODE_DYNAMIC)
+# Use core algorithm as well
+echo $client->format($alphabet = '0123456789abcdefg', $size = 22);
+# Or you want to use custom random bytes generator
+# PS: anonymous class it new feature when PHP_VERSION >= 7.0
+echo $client->format($alphabet = '0123456789abcdefg', $size = 22, new class implements \Hidehalo\Nanoid\GeneratorInterface {
+    /**
+     * @inheritDoc
+     */
+    public function random($size) 
+    {
+        //TODO: implemenation ...
+    }
+}); 
 ```
 
 ## Change log
@@ -31,7 +44,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Testing
 
 ``` bash
-$ ./vendor/bin/phpunit ./tests
+$ composer test
 ```
 
 ## Contributing
@@ -44,6 +57,7 @@ If you have any issues, just feel free and open it in this repository, thx!
 
 ## Credits
 
+- [ai](https://github.com/ai)
 - [hidehalo](https://github.com/hidehalo)
 - [All Contributors](https://github.com/hidehalo/nanoid-php/graphs/contributors)
 
