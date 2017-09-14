@@ -17,7 +17,7 @@ class GeneratorTest extends TestCase
     {
         $size = 5;
         $ret = $generator->random($size);
-        $this->assertNotNull($ret);
+        $this->assertEquals($size, count($ret));
     }
 
     /**
