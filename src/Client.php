@@ -15,29 +15,30 @@ class Client
      * @param string $alphabet Symbols to be used in ID.
      * @param integer $size number of symbols in ID.
      */
-    protected $alphbet = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    protected $size = 22;
+    protected $alphbet;
+    protected $size;
 
     /**
-     * @var CoreInterface $core
+     * @var CoreInterface $core Core dynamic random 
      */
-    protected $core;
+    private $core;
     /**
-     * @var GeneratorInterface $generator
+     * @var GeneratorInterface $generator Random Btyes Generator
      */
     protected $generator;
 
     /**
      * Constructor of Client
      *
-     * @param GeneratorInterface $generator
      * @param integer $size
+     * @param GeneratorInterface $generator
      */
-    public function __construct(GeneratorInterface $generator = null, $size = 22)
+    public function __construct($size = 22, GeneratorInterface $generator = null)
     {
-        $this->core = new Core();
-        $this->generator = $generator?:new Generator();
+        $this->alphbet = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';        
         $this->size = $size > 0 ? $size : 22;
+        $this->generator = $generator?:new Generator();        
+        $this->core = new Core();
     }
 
     /**
@@ -47,7 +48,7 @@ class Client
      * @param integer $mode Client::MODE_NORMAL|Client::MODE_DYNAMIC
      * @return string
      */
-    public function generate($size, $mode = self::MODE_NORMAL)
+    public function generateId($size, $mode = self::MODE_NORMAL)
     {
         $size = $size?: $this->size;
         switch ($mode) {
@@ -68,8 +69,9 @@ class Client
      * @param GeneratorInterface $generator
      * @param integer $size
      * @param string $alphabet default CoreInterface::SAFE_SYMBOLS
+     * @return string
      */
-    public function format($alphabet, $size, GeneratorInterface $generator = null)
+    public function formatedId($alphabet, $size, GeneratorInterface $generator = null)
     {
         $generator = $generator?:$this->generator;
         $alphabet = $alphabet?:CoreInterface::SAFE_SYMBOLS;
@@ -83,8 +85,10 @@ class Client
      * as UUID v4.
      *
      * @see https://github.com/ai/nanoid/blob/master/index.js
+     * @param integer $size
+     * @return string
      */
-    protected function normalRandom($size)
+    private function normalRandom($size)
     {
         $id = '';
         $bytes = $this->generator->random($size);
