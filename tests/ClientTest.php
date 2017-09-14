@@ -22,6 +22,19 @@ class ClientTest extends TestCase
     }
 
     /**
+     * @group passed
+     * @dataProvider clientProvider
+     * @param Client $client
+     */
+    public function testCoreRandomAPI(Client $client)
+    {
+        $size = 10;
+        $alphabet = '0123456789abcdefghi';
+        $id = $client->format($alphabet, $size);
+        $this->assertEquals($size, strlen($id));
+    }
+
+    /**
      * Client Provider
      *
      * @return mixed
