@@ -36,6 +36,11 @@ class Client
         }
     }
 
+    public function format(GeneratorInterface $generator, $size, $alphabet = CoreInterface::SAFE_SYMBOLS)
+    {
+        return $this->core->random($generator, $size, $alphabet);
+    }
+
     protected function normalRandom($size)
     {
         $id = '';
