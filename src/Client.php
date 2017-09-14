@@ -30,6 +30,7 @@ class Client
     /**
      * Constructor of Client
      *
+     * @codeCoverageIgnore
      * @param integer $size
      * @param GeneratorInterface $generator
      */
