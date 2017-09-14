@@ -19,7 +19,7 @@ class Client
     protected $size;
 
     /**
-     * @var CoreInterface $core Core dynamic random 
+     * @var CoreInterface $core Core dynamic random
      */
     private $core;
     /**
@@ -35,9 +35,9 @@ class Client
      */
     public function __construct($size = 22, GeneratorInterface $generator = null)
     {
-        $this->alphbet = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';        
+        $this->alphbet = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $this->size = $size > 0 ? $size : 22;
-        $this->generator = $generator?:new Generator();        
+        $this->generator = $generator?:new Generator();
         $this->core = new Core();
     }
 
