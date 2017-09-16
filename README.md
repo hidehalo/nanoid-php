@@ -50,7 +50,7 @@ echo $client->formatedId($alphabet = '0123456789abcdefg', $size = 22);
 ### Custom Random Bytes Generator
 
 ``` php
-# PS: anonymous class it new feature when PHP_VERSION >= 7.0
+# PS: anonymous class is new feature when PHP_VERSION >= 7.0
 echo $client->formatedId($alphabet = '0123456789abcdefg', $size = 22,
 new class implements GeneratorInterface {
     /**
