@@ -68,7 +68,7 @@ new class implements GeneratorInterface {
 > If you want to use the same URL-friendly symbols with `format`,
 > you can get default alphabet from the `url` module:
 
-Please see [CoreInterface::randome(...)](src/CoreInterface.php) for the core random API prototype and notes
+Please see [`CoreInterface::random(...)`](src/CoreInterface.php) for the core random API prototype and notes
 
 ## Examples
 
