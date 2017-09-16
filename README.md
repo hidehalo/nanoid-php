@@ -2,6 +2,14 @@
 
 [![Build Status](https://travis-ci.org/hidehalo/emoji.svg)](https://travis-ci.org/hidehalo/nanoid-php)
 
+> A tiny (179 bytes), secure URL-friendly unique string ID generator for JavaScript
+>
+> **Safe.** It uses cryptographically strong random APIs and guarantees a proper distribution of symbols.
+>
+> **Small.** Only 179 bytes (minified and gzipped). No dependencies. It uses Size Limit to control size.
+>
+> **Compact.** It uses more symbols than UUID (A-Za-z0-9_~) and has the same number of unique options in just 22 symbols instead of 36.
+
 Thanks awesome [ai](https://github.com/ai) and his [nanoid](https://github.com/ai/nanoid), this package is a copy in PHP!
 If you like nanoid and you want to use it in PHP, try me :D
 
@@ -10,23 +18,38 @@ If you like nanoid and you want to use it in PHP, try me :D
 Via Composer
 
 ``` bash
-$ composer require hidehalo/nanoid-php
+$composer require hidehalo/nanoid-php
 ```
 
 ## Usage
 
+### Normal
+
+> The main module uses URL-friendly symbols (A-Za-z0-9_~) and returns an ID with 22 characters (to have the same collisions probability as UUID v4).
+
 ``` php
 use Hidehalo\Nanoid\Client;
 use Hidehalo\Nanoid\GeneratorInterface;
-# Construct client
+
 $client = new Client();
-# Use normal random generator
+
+# default random generator
 echo $client->generateId($size = 22);
-# Use better random generator
+# more safer random generator
 echo $client->generateId($size = 22, $mode = Client::MODE_DYNAMIC)
-# Use core algorithm as well
+```
+
+### Custom Alphabet or Length
+
+``` php
 echo $client->formatedId($alphabet = '0123456789abcdefg', $size = 22);
-# Or you want to use custom random bytes generator
+```
+
+> Alphabet must contain less than 256 symbols.
+
+### Custom Random Bytes Generator
+
+``` php
 # PS: anonymous class it new feature when PHP_VERSION >= 7.0
 echo $client->formatedId($alphabet = '0123456789abcdefg', $size = 22,
 new class implements GeneratorInterface {
@@ -40,6 +63,13 @@ new class implements GeneratorInterface {
 });
 ```
 
+> `random` callback must accept the array size and return an array with random numbers.
+>
+> If you want to use the same URL-friendly symbols with `format`,
+> you can get default alphabet from the `url` module:
+
+Please see [CoreInterface::randome(...)](src/CoreInterface.php) for the core random API prototype and notes
+
 ## Examples
 
 Please see [Examples](examples) for more information on detailed usage.
@@ -51,7 +81,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Testing
 
 ``` bash
-$ composer test
+$composer test
 ```
 
 ## Contributing
