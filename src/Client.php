@@ -34,10 +34,10 @@ class Client
      * @param integer $size
      * @param GeneratorInterface $generator
      */
-    public function __construct($size = 22, GeneratorInterface $generator = null)
+    public function __construct($size = 21, GeneratorInterface $generator = null)
     {
         $this->alphbet = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $this->size = $size > 0 ? $size : 22;
+        $this->size = $size > 0 ? $size : 21;
         $this->generator = $generator?:new Generator();
         $this->core = new Core();
     }
@@ -82,7 +82,7 @@ class Client
 
     /**
      * Generate secure URL-friendly unique ID.
-     * By default, ID will have 22 symbols to have same collisions probability
+     * By default, ID will have 21 symbols to have same collisions probability
      * as UUID v4.
      *
      * @see https://github.com/ai/nanoid/blob/master/index.js
@@ -93,9 +93,8 @@ class Client
     {
         $id = '';
         $bytes = $this->generator->random($size);
-        for ($i = 1; $i <= $size; $i++) {
-            $bitmask = $bytes[$i] & 63;
-            $id .= $this->alphbet[$bitmask];
+        while (1 <= $size) {
+            $id .= $this->alphbet[$bytes[$size--] & 63];
         }
 
         return $id;
