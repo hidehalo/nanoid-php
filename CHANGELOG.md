@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.2] - 2018-08-14
+
+### Changed
+
+- Resolved [#1](https://github.com/hidehalo/nanoid-php/issues/1) via:
+
+        jenky (1):
+            Update: fix version conflicts of random_compat2 in PHP5.6&PHP7
+
 ## [1.1.1] - 2017-11-24
 
 ### Changed
