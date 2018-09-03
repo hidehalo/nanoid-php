@@ -20,6 +20,8 @@ class ClientTest extends TestCase
         $dynamicRandom = $client->generateId($size, Client::MODE_DYNAMIC);
         $this->assertEquals($size, strlen($dynamicRandom));
         $this->assertNotEquals($normalRandom, $dynamicRandom);
+        $defaultRandom = $client->generateId();
+        $this->assertEquals(21, strlen($defaultRandom));
     }
 
     /**
