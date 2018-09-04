@@ -36,10 +36,10 @@ class Client
      */
     public function __construct($size = 21, GeneratorInterface $generator = null)
     {
-        $this->alphbet = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $this->size = $size > 0 ? $size : 21;
         $this->generator = $generator?:new Generator();
         $this->core = new Core();
+        $this->alphbet = CoreInterface::SAFE_SYMBOLS;
     }
 
     /**
@@ -49,9 +49,9 @@ class Client
      * @param integer $mode Client::MODE_NORMAL|Client::MODE_DYNAMIC
      * @return string
      */
-    public function generateId($size, $mode = self::MODE_NORMAL)
+    public function generateId($size = 0, $mode = self::MODE_NORMAL)
     {
-        $size = $size?: $this->size;
+        $size = $size>0? $size: $this->size;
         switch ($mode) {
             case self::MODE_DYNAMIC:
                 return $this->core->random($this->generator, $size);
