@@ -92,9 +92,9 @@ class Client
     private function normalRandom($size)
     {
         $id = '';
-        $bytes = $this->generator->random($size);
-        while (1 <= $size) {
-            $id .= $this->alphbet[$bytes[$size--] & 63];
+        while (1 <= $size--) {
+            $rand = mt_rand()/(mt_getrandmax() + 1);
+            $id .= $this->alphbet[$rand*64 | 0];
         }
 
         return $id;
