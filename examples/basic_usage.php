@@ -12,7 +12,7 @@ $start = microtime(true);
 random_bytes($size);
 $end = microtime(true);
 $delta = ($end - $start) * 1e3;
-printf("Generate random bytes used: %.6s ms ...\n", $delta);
+printf("Generate random bytes used: %.6f ms ...\n", $delta);
 
 //@see https://github.com/ai/nanoid/blob/master/index.js
 $id = $nano->generateId($size);
