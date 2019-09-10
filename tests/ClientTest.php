@@ -29,13 +29,13 @@ class ClientTest extends TestCase
      * @dataProvider clientProvider
      * @param Client $client
      */
-    public function testFormatedId(Client $client)
+    public function testFormattedId(Client $client)
     {
         $size = 10;
         $alphabet = '0123456789abcdefghi';
-        $id = $client->formatedId($alphabet, $size);
+        $id = $client->formattedId($alphabet, $size);
         $this->assertEquals($size, strlen($id));
-        $dummyId = $client->formatedId($alphabet, $size, new DummyGenerator);
+        $dummyId = $client->formattedId($alphabet, $size, new DummyGenerator);
         $this->assertEquals($size, strlen($dummyId));
         $this->assertNotEquals($id, $dummyId);
     }

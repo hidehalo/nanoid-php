@@ -42,7 +42,7 @@ echo $client->generateId($size = 21, $mode = Client::MODE_DYNAMIC)
 ### Custom Alphabet or Length
 
 ``` php
-echo $client->formatedId($alphabet = '0123456789abcdefg', $size = 21);
+echo $client->formattedId($alphabet = '0123456789abcdefg', $size = 21);
 ```
 
 > Alphabet must contain 256 symbols or less.
@@ -52,7 +52,7 @@ echo $client->formatedId($alphabet = '0123456789abcdefg', $size = 21);
 
 ``` php
 # PS: anonymous class is new feature when PHP_VERSION >= 7.0
-echo $client->formatedId($alphabet = '0123456789abcdefg', $size = 21,
+echo $client->formattedId($alphabet = '0123456789abcdefg', $size = 21,
 new class implements GeneratorInterface {
     /**
      * @inheritDoc
