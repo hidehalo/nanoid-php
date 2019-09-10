@@ -90,7 +90,8 @@ class Client
      * @return string
      * @since 1.0.0
      */
-    public function formatedId($alphabet, $size, GeneratorInterface $generator = null) {
+    public function formatedId($alphabet, $size, GeneratorInterface $generator = null)
+    {
         return $this->formattedId($alphabet, $size, $generator);
     }
 
