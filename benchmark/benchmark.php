@@ -10,7 +10,7 @@ $counter = [];
 
 $timeStated = microtime(true);
 for ($i = 0; $i < $loop; $i++) {
-    $alpha = $nano->formatedId($alphabet, 1);
+    $alpha = $nano->formattedId($alphabet, 1);
     !isset($counter[$alpha]) and $counter[$alpha] = 0;
     isset($counter[$alpha]) and $counter[$alpha]++;
 }

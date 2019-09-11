@@ -72,12 +72,27 @@ class Client
      * @param string $alphabet default CoreInterface::SAFE_SYMBOLS
      * @return string
      */
-    public function formatedId($alphabet, $size, GeneratorInterface $generator = null)
+    public function formattedId($alphabet, $size, GeneratorInterface $generator = null)
     {
         $generator = $generator?:$this->generator;
         $alphabet = $alphabet?:CoreInterface::SAFE_SYMBOLS;
 
         return $this->core->random($generator, $size, $alphabet);
+    }
+
+    /**
+     * Backwards-compatible method name.
+     *
+     * @param string $alphabet
+     * @param integer $size
+     * @param GeneratorInterface $generator
+     *
+     * @return string
+     * @since 1.0.0
+     */
+    public function formatedId($alphabet, $size, GeneratorInterface $generator = null)
+    {
+        return $this->formattedId($alphabet, $size, $generator);
     }
 
     /**

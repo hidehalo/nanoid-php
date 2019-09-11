@@ -22,8 +22,8 @@ class DummyGenerator implements GeneratorInterface
 
 $nano = new Client();
 $alphabet = '0123456789';
-$nanoId = $nano->formatedId($alphabet, 10);
-$dummyId = $nano->formatedId($alphabet, 10, new DummyGenerator);
+$nanoId = $nano->formattedId($alphabet, 10);
+$dummyId = $nano->formattedId($alphabet, 10, new DummyGenerator);
 
 printf("Default nano ID: %s\n", $nanoId);
-printf("Formated nano ID: %s\n", $dummyId);
+printf("Formatted nano ID: %s\n", $dummyId);
