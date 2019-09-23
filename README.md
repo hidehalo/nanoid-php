@@ -8,7 +8,7 @@
 >
 > **Small.** Only 179 bytes (minified and gzipped). No dependencies. It uses Size Limit to control size.
 >
-> **Compact.** It uses more symbols than UUID (A-Za-z0-9_~) and has the same number of unique options in just 21 symbols instead of 36.
+> **Compact.** It uses more symbols than UUID (A-Za-z0-9_\-) and has the same number of unique options in just 21 symbols instead of 36.
 
 Thanks awesome [ai](https://github.com/ai) and his [nanoid](https://github.com/ai/nanoid), this package is a copy in PHP!
 If you like nanoid and you want to use it in PHP, try me :D
@@ -25,7 +25,7 @@ $composer require hidehalo/nanoid-php
 
 ### Normal
 
-> The main module uses URL-friendly symbols (A-Za-z0-9_~) and returns an ID with 21 characters (to have the same collisions probability as UUID v4).
+> The main module uses URL-friendly symbols (A-Za-z0-9_\-) and returns an ID with 21 characters (to have the same collisions probability as UUID v4).
 
 ``` php
 use Hidehalo\Nanoid\Client;
