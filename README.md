@@ -36,7 +36,7 @@ $client = new Client();
 # default random generator
 echo $client->generateId($size = 21);
 # more safer random generator
-echo $client->generateId($size = 21, $mode = Client::MODE_DYNAMIC)
+echo $client->generateId($size = 21, $mode = Client::MODE_DYNAMIC);
 ```
 
 ### Custom Alphabet or Length
