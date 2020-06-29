@@ -37,7 +37,7 @@ class Client
     public function __construct($size = 21, GeneratorInterface $generator = null)
     {
         $this->size = $size > 0 ? $size : 21;
-        $this->generator = $generator?:new Generator();
+        $this->generator = $generator ?: new Generator();
         $this->core = new Core();
         $this->alphbet = CoreInterface::SAFE_SYMBOLS;
     }
@@ -51,10 +51,11 @@ class Client
      */
     public function generateId($size = 0, $mode = self::MODE_NORMAL)
     {
-        $size = $size>0? $size: $this->size;
+        $size = $size > 0 ? $size : $this->size;
+
         switch ($mode) {
             case self::MODE_DYNAMIC:
-                return $this->core->random($this->generator, $size);
+                return $this->core->random($this->generator, $size, $this->alphbet);
             default:
                 return $this->normalRandom($size);
         }
@@ -67,15 +68,16 @@ class Client
      *
      * @see https://github.com/ai/nanoid/blob/master/format.js
      * @see https://github.com/ai/nanoid/blob/master/generate.js
-     * @param GeneratorInterface $generator
-     * @param integer $size
      * @param string $alphabet default CoreInterface::SAFE_SYMBOLS
+     * @param integer $size
+     * @param GeneratorInterface $generator
      * @return string
      */
-    public function formattedId($alphabet, $size, GeneratorInterface $generator = null)
+    public function formattedId($alphabet = null, $size = 0, GeneratorInterface $generator = null)
     {
-        $generator = $generator?:$this->generator;
-        $alphabet = $alphabet?:CoreInterface::SAFE_SYMBOLS;
+        $alphabet = $alphabet ?: CoreInterface::SAFE_SYMBOLS;
+        $size = $size > 0 ? $size : $this->size;
+        $generator = $generator ?: $this->generator;
 
         return $this->core->random($generator, $size, $alphabet);
     }
