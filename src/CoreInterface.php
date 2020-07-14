@@ -1,9 +1,6 @@
 <?php
 namespace Hidehalo\Nanoid;
 
-/**
- * @see https://github.com/ai/nanoid/blob/master/format.js
- */
 interface CoreInterface
 {
     const SAFE_SYMBOLS = '_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -18,5 +15,5 @@ interface CoreInterface
      * @param string $alphabet
      * @param integer $size
      */
-    public function random(GeneratorInterface $generator, $size, $alphabet);
+    public function random(GeneratorInterface $generator, $size, $alphabet = CoreInterface::SAFE_SYMBOLS);
 }

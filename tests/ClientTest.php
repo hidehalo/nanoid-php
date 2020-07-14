@@ -38,6 +38,8 @@ class ClientTest extends TestCase
         $dummyId = $client->formattedId($alphabet, $size, new DummyGenerator);
         $this->assertEquals($size, strlen($dummyId));
         $this->assertNotEquals($id, $dummyId);
+        $defaultSizeId = $client->formattedId($alphabet);
+        $this->assertEquals(21, strlen($defaultSizeId));
     }
 
     /**
@@ -54,6 +56,8 @@ class ClientTest extends TestCase
         $dummyId = $client->formatedId($alphabet, $size, new DummyGenerator);
         $this->assertEquals($size, strlen($dummyId));
         $this->assertNotEquals($id, $dummyId);
+        $defaultSizeId = $client->formatedId($alphabet);
+        $this->assertEquals(21, strlen($defaultSizeId));
     }
 
     /**

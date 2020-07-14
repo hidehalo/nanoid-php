@@ -54,7 +54,7 @@ class Client
         $size = $size>0? $size: $this->size;
         switch ($mode) {
             case self::MODE_DYNAMIC:
-                return $this->core->random($this->generator, $size);
+                return $this->core->random($this->generator, $size, $this->alphbet);
             default:
                 return $this->normalRandom($size);
         }
@@ -65,17 +65,16 @@ class Client
      * you have been implements your custom GeneratorInterface as correctly.
      * Otherwise use the build-in default random bytes generator
      *
-     * @see https://github.com/ai/nanoid/blob/master/format.js
-     * @see https://github.com/ai/nanoid/blob/master/generate.js
      * @param GeneratorInterface $generator
      * @param integer $size
      * @param string $alphabet default CoreInterface::SAFE_SYMBOLS
      * @return string
      */
-    public function formattedId($alphabet, $size, GeneratorInterface $generator = null)
+    public function formattedId($alphabet, $size = 0, GeneratorInterface $generator = null)
     {
-        $generator = $generator?:$this->generator;
         $alphabet = $alphabet?:CoreInterface::SAFE_SYMBOLS;
+        $size = $size>0? $size: $this->size;
+        $generator = $generator?:$this->generator;
 
         return $this->core->random($generator, $size, $alphabet);
     }
@@ -90,8 +89,10 @@ class Client
      * @return string
      * @since 1.0.0
      */
-    public function formatedId($alphabet, $size, GeneratorInterface $generator = null)
+    public function formatedId($alphabet, $size = 0, GeneratorInterface $generator = null)
     {
+        $size = $size>0? $size: $this->size;
+
         return $this->formattedId($alphabet, $size, $generator);
     }
 
@@ -100,7 +101,7 @@ class Client
      * By default, ID will have 21 symbols to have same collisions probability
      * as UUID v4.
      *
-     * @see https://github.com/ai/nanoid/blob/master/index.js
+     * @see https://github.com/ai/nanoid/blob/master/non-secure/index.js#L19
      * @param integer $size
      * @return string
      */

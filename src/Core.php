@@ -5,6 +5,7 @@ class Core implements CoreInterface
 {
     /**
      * @inheritDoc
+     * @see https://github.com/ai/nanoid/blob/master/async/index.browser.js#L4
      */
     public function random(GeneratorInterface $generator, $size, $alphabet = CoreInterface::SAFE_SYMBOLS)
     {
@@ -19,7 +20,7 @@ class Core implements CoreInterface
                 if (isset($alphabet[$byte])) {
                     $id .= $alphabet[$byte];
                     if (strlen($id) === $size) {
-                        
+
                         return $id;
                     }
                 }
