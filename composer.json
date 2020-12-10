@@ -25,7 +25,16 @@
         "squizlabs/php_codesniffer": "^2.3"
     },
     "archive": {
-        "exclude": ["tests/", "benchmark/", "examples"]
+        "exclude": [
+            "tests/",
+            "benchmark/",
+            "examples/",
+            ".gitignore",
+            ".editorconfig",
+            "*.md",
+            "*.yml",
+            "*.xml"
+        ]
     },
     "autoload": {
         "psr-4": {
