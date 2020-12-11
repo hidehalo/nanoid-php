@@ -1,0 +1,8 @@
+benchmark/ export-ignore
+examples/ export-ignore
+tests/ export-ignore
+.gitignore export-ignore
+.editorconfig export-ignore
+*.md export-ignore
+*.yml export-ignore
+*.xml export-ignore
