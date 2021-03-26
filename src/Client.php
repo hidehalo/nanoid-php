@@ -15,7 +15,7 @@ class Client
      * @param string $alphabet Symbols to be used in ID.
      * @param integer $size number of symbols in ID.
      */
-    protected $alphbet;
+    protected $alphabet;
     protected $size;
 
     /**
@@ -39,7 +39,7 @@ class Client
         $this->size = $size > 0 ? $size : 21;
         $this->generator = $generator?:new Generator();
         $this->core = new Core();
-        $this->alphbet = CoreInterface::SAFE_SYMBOLS;
+        $this->alphabet = CoreInterface::SAFE_SYMBOLS;
     }
 
     /**
@@ -54,7 +54,7 @@ class Client
         $size = $size>0? $size: $this->size;
         switch ($mode) {
             case self::MODE_DYNAMIC:
-                return $this->core->random($this->generator, $size, $this->alphbet);
+                return $this->core->random($this->generator, $size, $this->alphabet);
             default:
                 return $this->normalRandom($size);
         }
@@ -110,7 +110,7 @@ class Client
         $id = '';
         while (1 <= $size--) {
             $rand = mt_rand()/(mt_getrandmax() + 1);
-            $id .= $this->alphbet[$rand*64 | 0];
+            $id .= $this->alphabet[$rand*64 | 0];
         }
 
         return $id;
