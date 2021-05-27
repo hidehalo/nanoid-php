@@ -1,6 +1,7 @@
 # Nanoid-php
 
 [![Build Status](https://travis-ci.org/hidehalo/emoji.svg)](https://travis-ci.org/hidehalo/nanoid-php)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhidehalo%2Fnanoid-php.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhidehalo%2Fnanoid-php?ref=badge_shield)
 
 > A tiny (179 bytes), secure URL-friendly unique string ID generator for JavaScript
 >
@@ -102,3 +103,6 @@ If you have any issues, just feel free and open it in this repository, thx!
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhidehalo%2Fnanoid-php.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhidehalo%2Fnanoid-php?ref=badge_large)
