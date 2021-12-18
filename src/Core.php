@@ -10,7 +10,7 @@ class Core implements CoreInterface
     public function random(GeneratorInterface $generator, $size, $alphabet = CoreInterface::SAFE_SYMBOLS)
     {
         $len = strlen($alphabet);
-        $mask = (2 << log($len - 1) / M_LN2) - 1;
+        $mask = (2 << (int) (log($len - 1) / M_LN2)) - 1;
         $step = (int) ceil(1.6 * $mask * $size / $len);
         $id = '';
         while (true) {
