@@ -15,8 +15,10 @@ class Core implements CoreInterface
         $id = '';
         while (true) {
             $bytes = $generator->random($step);
-            for ($i = 1; $i <= $step; $i++) {
-                $byte = $bytes[$i] & $mask;
+            // NOTE: `$bytes` maybe not a normal "Array"
+            // sometimes it's begin from index 1, use iterator please
+            foreach ($bytes as $byte) {
+                $byte &= $mask;
                 if (isset($alphabet[$byte])) {
                     $id .= $alphabet[$byte];
                     if (strlen($id) === $size) {
