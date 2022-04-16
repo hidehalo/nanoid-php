@@ -12,33 +12,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Get Composer Cache Directory
-      id: composer-cache
-      run: |
-        echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-    - uses: actions/cache@v3
-      with:
-        path: ${{ steps.composer-cache.outputs.dir }}
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-composer-
+      - uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
-    - name: Install dependencies
-      run: composer self-update /
-        composer install --prefer-dist --no-progress
+      - name: Install dependencies
+        run: composer self-update
+          composer install --prefer-dist --no-progress
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+      # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    # - name: Run test suite
-    #   run: composer run-script test
-    - name: PHP Lint
-    # You may pin to the exact commit or the version.
-    # uses: michaelw90/PHP-Lint@0d9e19434b05c780f6cc87fa573bbc6061dbfe24
-      uses: michaelw90/PHP-Lint@2.1.0
+      # - name: Run test suite
+      #   run: composer run-script test
+      - name: PHP Lint
+      # You may pin to the exact commit or the version.
+      # uses: michaelw90/PHP-Lint@0d9e19434b05c780f6cc87fa573bbc6061dbfe24
+        uses: michaelw90/PHP-Lint@2.1.0
 
-    - name: PHPUnit
-      run: XDEBUG_MODE=coverage vendor/bin/phpunit -d memory_limit=1024M --coverage-text
+      - name: PHPUnit
+        run: XDEBUG_MODE=coverage vendor/bin/phpunit -d memory_limit=1024M --coverage-text
