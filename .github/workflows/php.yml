@@ -27,7 +27,7 @@ jobs:
           ${{ runner.os }}-composer-
 
     - name: Install dependencies
-      run: composer self-update \
+      run: composer self-update /
         composer install --prefer-dist --no-progress
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
