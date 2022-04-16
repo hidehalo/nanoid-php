@@ -27,8 +27,9 @@ jobs:
             ${{ runner.os }}-composer-
 
       - name: Install dependencies
-      - run: composer self-update
-      - run: composer install --prefer-dist --no-progress
+        run: |
+          composer self-update
+          composer install --prefer-dist --no-progress
 
       # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
       # Docs: https://getcomposer.org/doc/articles/scripts.md
