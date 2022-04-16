@@ -18,6 +18,7 @@ jobs:
       id: composer-cache
       run: |
         echo "::set-output name=dir::$(composer config cache-files-dir)"
+
     - uses: actions/cache@v3
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
@@ -26,7 +27,7 @@ jobs:
           ${{ runner.os }}-composer-
 
     - name: Install dependencies
-      run: composer self-update
+      run: composer self-update \
         composer install --prefer-dist --no-progress
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
