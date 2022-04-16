@@ -8,10 +8,22 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        php-versions: ['5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
+        phpunit-versions: ['latest']
 
     steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          ini-values: post_max_size=256M, max_execution_time=180
+          coverage: xdebug
+          tools: phpunit:${{ matrix.phpunit-versions }}
+
       - uses: actions/checkout@v3
 
       - name: Get Composer Cache Directory
@@ -33,14 +45,7 @@ jobs:
           composer self-update
           composer install --prefer-dist --no-progress
 
-      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-      # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-      # - name: Run test suite
-      #   run: composer run-script test
       - name: PHP Lint
-      # You may pin to the exact commit or the version.
-      # uses: michaelw90/PHP-Lint@0d9e19434b05c780f6cc87fa573bbc6061dbfe24
         uses: michaelw90/PHP-Lint@2.1.0
 
       - name: PHPUnit
