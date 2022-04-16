@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        operating-system: ['ubuntu-latest', 'macos-latest']
         php-versions: ['5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
         phpunit-versions: ['latest']
 
@@ -44,9 +44,6 @@ jobs:
           mv composer.phar /usr/local/bin/composer
           composer self-update
           composer install --prefer-dist --no-progress
-
-      - name: PHP Lint
-        uses: michaelw90/PHP-Lint@2.1.0
 
       - name: PHPUnit
         run: XDEBUG_MODE=coverage vendor/bin/phpunit -d memory_limit=1024M --coverage-text
