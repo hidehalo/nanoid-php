@@ -22,7 +22,6 @@ class Core implements CoreInterface
                 if (isset($alphabet[$byte])) {
                     $id .= $alphabet[$byte];
                     if (strlen($id) === $size) {
-
                         return $id;
                     }
                 }
