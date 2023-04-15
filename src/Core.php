@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace Hidehalo\Nanoid;
 
 class Core implements CoreInterface
@@ -7,8 +7,11 @@ class Core implements CoreInterface
      * @inheritDoc
      * @see https://github.com/ai/nanoid/blob/master/async/index.browser.js#L4
      */
-    public function random(GeneratorInterface $generator, $size, $alphabet = CoreInterface::SAFE_SYMBOLS)
-    {
+    public function random(
+        GeneratorInterface $generator,
+        int $size,
+        string $alphabet = CoreInterface::SAFE_SYMBOLS
+    ): string {
         $len = strlen($alphabet);
         $mask = (2 << (int) (log($len - 1) / M_LN2)) - 1;
         $step = (int) ceil(1.6 * $mask * $size / $len);

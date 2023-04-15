@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace Hidehalo\Nanoid;
 
 interface CoreInterface
@@ -10,10 +10,10 @@ interface CoreInterface
      * Secure random string generator with custom alphabet.
      * Alphabet must contain 256 symbols or less. Otherwise, the generator
      * will not be secure.
-     *
-     * @param GeneratorInterface $generator
-     * @param string $alphabet
-     * @param integer $size
      */
-    public function random(GeneratorInterface $generator, $size, $alphabet = CoreInterface::SAFE_SYMBOLS);
+    public function random(
+        GeneratorInterface $generator,
+        int $size,
+        string $alphabet = CoreInterface::SAFE_SYMBOLS
+    ): string;
 }

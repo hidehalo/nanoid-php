@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace Hidehalo\Nanoid\Test;
 
 use Hidehalo\Nanoid\Client;
@@ -10,9 +10,8 @@ class ClientTest extends TestCase
     /**
      * @group passed
      * @dataProvider clientProvider
-     * @param Client $client
      */
-    public function testGenerateId(Client $client)
+    public function testGenerateId(Client $client): void
     {
         $size = 7;
         $normalRandom = $client->generateId($size);
@@ -29,9 +28,8 @@ class ClientTest extends TestCase
     /**
      * @group passed
      * @dataProvider clientProvider
-     * @param Client $client
      */
-    public function testFormattedId(Client $client)
+    public function testFormattedId(Client $client): void
     {
         $size = 10;
         $alphabet = '0123456789abcdefghi';
@@ -47,9 +45,8 @@ class ClientTest extends TestCase
     /**
      * @group passed
      * @dataProvider clientProvider
-     * @param Client $client
      */
-    public function testFormatedId(Client $client)
+    public function testFormatedId(Client $client): void
     {
         $size = 10;
         $alphabet = '0123456789abcdefghi';
@@ -64,10 +61,8 @@ class ClientTest extends TestCase
 
     /**
      * Client Provider
-     *
-     * @return mixed
      */
-    public function clientProvider()
+    public static function clientProvider(): array
     {
         return [
             [new Client()]
