@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace Hidehalo\Nanoid\Test;
 
 use PHPUnit\Framework\TestCase;
@@ -11,9 +11,8 @@ class GeneratorTest extends TestCase
     /**
      * @group passed
      * @dataProvider generatorProvider
-     * @param CoreInterface $core
      */
-    public function testRandom(GeneratorInterface $generator)
+    public function testRandom(GeneratorInterface $generator): void
     {
         $size = 5;
         $ret = $generator->random($size);
@@ -22,10 +21,8 @@ class GeneratorTest extends TestCase
 
     /**
      * Generator Provider
-     *
-     * @return mixed
      */
-    public function generatorProvider()
+    public static function generatorProvider(): array
     {
         return [
             [new Generator()]

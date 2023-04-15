@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace Hidehalo\Nanoid;
 
 class Client
@@ -16,27 +16,25 @@ class Client
      * @param string $alphabet Symbols to be used in ID.
      * @param integer $size number of symbols in ID.
      */
-    protected $alphabet;
-    protected $size;
+    protected string $alphabet;
+    protected int $size;
 
     /**
      * @var CoreInterface $core Core dynamic random
      */
-    private $core;
+    private CoreInterface $core;
 
     /**
      * @var GeneratorInterface $generator Random Btyes Generator
      */
-    protected $generator;
+    protected GeneratorInterface $generator;
 
     /**
      * Constructor of Client
      *
      * @codeCoverageIgnore
-     * @param integer $size
-     * @param GeneratorInterface $generator
      */
-    public function __construct($size = 21, GeneratorInterface $generator = null)
+    public function __construct(int $size = 21, GeneratorInterface $generator = null)
     {
         $this->size = $size > 0 ? $size : 21;
         $this->generator = $generator ?: new Generator();
@@ -47,11 +45,9 @@ class Client
     /**
      * Generate nanoid via optional modes
      *
-     * @param integer $size
      * @param integer $mode Client::MODE_NORMAL|Client::MODE_DYNAMIC
-     * @return string
      */
-    public function generateId($size = 0, $mode = self::MODE_NORMAL)
+    public function generateId(int $size = 0, int $mode = self::MODE_NORMAL): string
     {
         $size = $size > 0 ? $size : $this->size;
         switch ($mode) {
@@ -67,12 +63,9 @@ class Client
      * you have been implements your custom GeneratorInterface as correctly.
      * Otherwise use the build-in default random bytes generator
      *
-     * @param GeneratorInterface $generator
-     * @param integer $size
      * @param string $alphabet default CoreInterface::SAFE_SYMBOLS
-     * @return string
      */
-    public function formattedId($alphabet, $size = 0, GeneratorInterface $generator = null)
+    public function formattedId(string $alphabet, int $size = 0, GeneratorInterface $generator = null): string
     {
         $alphabet = $alphabet ?: CoreInterface::SAFE_SYMBOLS;
         $size = $size > 0 ? $size : $this->size;
@@ -84,14 +77,9 @@ class Client
     /**
      * Backwards-compatible method name.
      *
-     * @param string $alphabet
-     * @param integer $size
-     * @param GeneratorInterface $generator
-     *
-     * @return string
      * @since 1.0.0
      */
-    public function formatedId($alphabet, $size = 0, GeneratorInterface $generator = null)
+    public function formatedId(string $alphabet, int $size = 0, GeneratorInterface $generator = null): string
     {
         $size = $size > 0 ? $size : $this->size;
 
@@ -104,10 +92,8 @@ class Client
      * as UUID v4.
      *
      * @see https://github.com/ai/nanoid/blob/master/non-secure/index.js#L19
-     * @param integer $size
-     * @return string
      */
-    private function normalRandom($size)
+    private function normalRandom(int $size): string
     {
         $id = '';
         while (1 <= $size--) {

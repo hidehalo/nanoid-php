@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace Hidehalo\Nanoid\Test;
 
 use Hidehalo\Nanoid\Core;
@@ -12,10 +12,8 @@ class CoreTest extends TestCase
     /**
      * @group passed
      * @dataProvider coreProvider
-     * @param CoreInterface $core
-     * @param GeneratorInterface $generator
      */
-    public function testRandom(CoreInterface $core, GeneratorInterface $generator)
+    public function testRandom(CoreInterface $core, GeneratorInterface $generator): void
     {
         $alph = 'abcdefghijk0123456789';
         $size = 5;
@@ -25,10 +23,8 @@ class CoreTest extends TestCase
 
     /**
      * Core Provider
-     *
-     * @return mixed
      */
-    public function coreProvider()
+    public static function coreProvider(): array
     {
         return [
             [new Core(), new Generator()]
