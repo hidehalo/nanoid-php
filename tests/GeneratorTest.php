@@ -25,7 +25,7 @@ class GeneratorTest extends TestCase
      *
      * @return mixed
      */
-    public function generatorProvider()
+    public static function generatorProvider()
     {
         return [
             [new Generator()]
