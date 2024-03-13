@@ -67,7 +67,7 @@ class ClientTest extends TestCase
      *
      * @return mixed
      */
-    public function clientProvider()
+    public static function clientProvider()
     {
         return [
             [new Client()]

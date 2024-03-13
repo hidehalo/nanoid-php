@@ -28,7 +28,7 @@ class CoreTest extends TestCase
      *
      * @return mixed
      */
-    public function coreProvider()
+    public static function coreProvider()
     {
         return [
             [new Core(), new Generator()]
