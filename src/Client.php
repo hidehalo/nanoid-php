@@ -34,9 +34,9 @@ class Client
      *
      * @codeCoverageIgnore
      * @param integer $size
-     * @param GeneratorInterface $generator
+     * @param GeneratorInterface|null $generator
      */
-    public function __construct($size = 21, GeneratorInterface $generator = null)
+    public function __construct($size = 21, ?GeneratorInterface $generator = null)
     {
         $this->size = $size > 0 ? $size : 21;
         $this->generator = $generator ?: new Generator();
@@ -67,12 +67,12 @@ class Client
      * you have been implements your custom GeneratorInterface as correctly.
      * Otherwise use the build-in default random bytes generator
      *
-     * @param GeneratorInterface $generator
+     * @param GeneratorInterface|null $generator
      * @param integer $size
      * @param string $alphabet default CoreInterface::SAFE_SYMBOLS
      * @return string
      */
-    public function formattedId($alphabet, $size = 0, GeneratorInterface $generator = null)
+    public function formattedId($alphabet, $size = 0, ?GeneratorInterface $generator = null)
     {
         $alphabet = $alphabet ?: CoreInterface::SAFE_SYMBOLS;
         $size = $size > 0 ? $size : $this->size;
@@ -86,12 +86,12 @@ class Client
      *
      * @param string $alphabet
      * @param integer $size
-     * @param GeneratorInterface $generator
+     * @param GeneratorInterface|null $generator
      *
      * @return string
      * @since 1.0.0
      */
-    public function formatedId($alphabet, $size = 0, GeneratorInterface $generator = null)
+    public function formatedId($alphabet, $size = 0, ?GeneratorInterface $generator = null)
     {
         $size = $size > 0 ? $size : $this->size;
 
